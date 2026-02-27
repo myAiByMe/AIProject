@@ -1,0 +1,51 @@
+====================================================
+  HessGPT - Technologies & Architecture
+====================================================
+
+--- ATTENTION ---
+- Multi-Head Attention (MHA)
+- Grouped Query Attention (GQA) — repeat_interleave
+- Flash Attention (F.scaled_dot_product_attention, PyTorch 2.0+)
+- QK-Norm (normalisation de Q et K avant attention)
+- Causal Masking (masque triangulaire supérieur)
+
+--- POSITIONAL ENCODING ---
+- RoPE (Rotary Positional Embedding)
+- YaRN (Yet another RoPE extensioN) — extension de contexte
+- Fallback : Learned Positional Embeddings (si RoPE désactivé)
+
+--- NORMALISATION ---
+- RMSNorm (Root Mean Square Normalization) — Pre-Norm
+
+--- FEED-FORWARD ---
+- SwiGLU (Swish-Gated Linear Unit)
+- Fallback : GELU FFN classique
+
+--- ACTIVATION FUNCTIONS ---
+- SiLU / Swish (dans SwiGLU)
+- GELU (fallback FFN)
+- Tanh (soft-capping logits)
+
+--- ARCHITECTURE GENERALE ---
+- Transformer Decoder-only (GPT-style)
+- Pre-LayerNorm (RMSNorm avant attention et FFN)
+- Residual Connections
+- Weight Tying (token embeddings partagés avec output head)
+- Soft-Capping logits (Gemma-style, tanh)
+
+--- OPTIMISATIONS ---
+- Causal mask cache (évite recréation à chaque forward)
+- RoPE cos/sin cache (évite recalcul si même seq_len/device/dtype)
+- Weight tying (réduit les paramètres)
+- Bias=False sur toutes les projections linéaires
+
+--- GENERATION ---
+- Autoregressive decoding
+- Temperature scaling
+- Top-K sampling
+
+--- FRAMEWORK ---
+- PyTorch (nn.Module, F.scaled_dot_product_attention)
+- Python 3.x
+
+====================================================
