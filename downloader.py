@@ -57,7 +57,7 @@ CONFIG = {
     'output_dir':       './data/ultra_filtered',
     'checkpoint_dir':   './temp_checkpoints',
     'offsets_file':     './data/ultra_filtered/dataset_offsets.json',
-    'tokenizer_name':   'meta-llama/Meta-Llama-3-8B',
+    'tokenizer_name':   'NousResearch/Meta-Llama-3-8B',
     'num_chunks':       10,
 
     'checkpoint_interval': 100_000_000,  # 100M tokens
